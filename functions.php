@@ -3,12 +3,24 @@ $password = "";
 
 if (isset($_GET["length"])) {
 
-  $lower = "abcdefghijklmnopqrstuvwxyz";
-  $upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  $letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   $numbers = "0123456789";
   $symbols = "!@#$%^&*()-_=+[]{};:,.<>?/~`";
 
-  $allChar = $lower . $upper . $numbers . $symbols;
+  $allChar = "";
+
+  if (isset($_GET["letters"]) && $_GET["letters"] == "on") {
+    $allChar .= $letters;
+  }
+
+  if (isset($_GET["numbers"]) && $_GET["numbers"] == "on") {
+    $allChar .= $numbers;
+  }
+
+  if (isset($_GET["symbols"]) && $_GET["symbols"] == "on") {
+    $allChar .= $symbols;
+  }
+
 
   for ($i = 0; $i < $_GET["length"]; $i++) {
 
