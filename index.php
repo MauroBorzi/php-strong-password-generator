@@ -2,6 +2,14 @@
 
 require_once "./functions.php";
 
+if ($password != "") {
+  session_start();
+
+  $_SESSION["password"] = $password;
+
+  header("Location: ./result.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +31,6 @@ require_once "./functions.php";
     <label for="length">Lunghezza password(Da 5 a 20 caratteri)</label>
     <button type="submit">GENERA</button>
   </form>
-
-  <hr>
-
-  <?php if ($password != "") { ?>
-    <h4>La tua Password è: </h4><?php echo $password; ?>
-  <?php } ?>
 
 </body>
 
