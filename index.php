@@ -10,6 +10,14 @@
 
 <body>
 
+  <h1>Generatore password</h1>
+
+  <form action="">
+    <input id="length" name="length" type="number" min="5" max="20">
+    <label for="length">Lunghezza password</label>
+    <button type="submit">GENERA</button>
+  </form>
+
 </body>
 
 </html>
