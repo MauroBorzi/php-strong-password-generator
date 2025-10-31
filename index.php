@@ -1,3 +1,27 @@
+<?php
+
+$password = "";
+
+if (isset($_GET["length"])) {
+
+  $lower = "abcdefghijklmnopqrstuvwxyz";
+  $upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  $numbers = "0123456789";
+  $symbols = "!@#$%^&*()-_=+[]{};:,.<>?/~`";
+
+  $allChar = $lower . $upper . $numbers . $symbols;
+
+  for ($i = 0; $i < $_GET["length"]; $i++) {
+
+    $randomPosition = rand(0, strlen($allChar) - 1);
+    $randomChar = substr($allChar, $randomPosition, 1);
+
+    $password .= $randomChar;
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +38,15 @@
 
   <form action="">
     <input id="length" name="length" type="number" min="5" max="20">
-    <label for="length">Lunghezza password</label>
+    <label for="length">Lunghezza password(Da 5 a 20 caratteri)</label>
     <button type="submit">GENERA</button>
   </form>
+
+  <hr>
+
+  <?php if ($password != "") { ?>
+    <h4>La tua Password è: </h4><?php echo $password; ?>
+  <?php } ?>
 
 </body>
 
